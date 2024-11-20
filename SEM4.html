@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mouse Events</title>
+        <script>
+            var pics = ["30695.jpg","30695.jpg","chandragupta .jpg","chandragupta .jpg"];
+            function bodyload(){
+                var container = document.getElementById("container");
+                for(var item of pics)
+                {
+                    var img = new Image();
+                    img.src = item;
+                    img.height="100";
+                    img.width="100";
+                    container.appendChild(img);
+                }
+            }
+        </script>
+        <style>
+            img {
+                transform: scale(1);
+                transition: 2s;
+                opacity: 0.6;
+                z-index: 0;
+            }
+            img:hover {
+                transform: scale(2);
+                transition: 2s;
+                opacity: 1.0;
+                z-index: 30px;
+            }
+            marquee {
+                height: 200px;
+                padding: 20px;
+            }
+        </style>
+    </head>
+    <body onload="bodyload()">
+       <marquee onmouseover="this.stop()" onmouseout="this.start()">
+        <div id="container">
+
+        </div>
+       </marquee>
+    </body>
+</html>
+

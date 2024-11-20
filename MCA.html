@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Window Object</title>
+        <script>
+            function ShowAds(){
+                window.open("../Images/chandragupta.jpg","Nike","width=400 height=300");
+                window.open("../layout.html", "Layout", "width=300 height=200");
+            }
+        </script>
+    </head>
+    <body>
+        <h2>JavaScript window Object</h2>
+        <button onclick="ShowAds()">Open</button>
+        <button onclick="window.close()">Close</button>
+        <button onclick="window.print()">Print</button>
+    </body>
+</html>
+location object
+-	It provides a set of properties and methods that are used to access the client location details
+o	host		: return the server name or IP address
+o	href		: return the complete URL.
+o	protocol: return the current protocol.
+o	port 	: return the current port number. 
+o	search	: return the query string. 
+o	hash	: return the hash location [URI] 
+o	reload()	: It reloads the current request. 
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Location</title>
+        <style>
+            dt{
+                margin-top: 20px;
+                background-color: lightgreen;
+                font-weight: bold;
+            }
+        </style>
+        <script>
+            function GetLocation(){
+                document.getElementById("lblServer").innerHTML= location.host;
+                var protocol = location.protocol;
+                var msg = document.getElementById("msg");
+                if(protocol=="http:") {
+                    msg.innerHTML = "You are accessing from Un-secured Web Server";
+                }
+                if(protocol=="https:"){
+                    msg.innerHTML = "You are accessing from Secured Web server";
+                } 
+                if(protocol=="file:") {
+                    msg.innerHTML = "You are accessing from file server - please use a web server";
+                }
+                document.getElementById("lblProtocol").innerHTML = location.protocol;
+                
+                document.getElementById("lblPort").innerHTML = location.port;
+                document.getElementById("lblUrl").innerHTML = location.href;
+            }
+        </script>
+    </head>
+    <body>
+        <fieldset>
+            <legend><button onclick="GetLocation()">Get Location Details</button></legend>
+            <dl>
+                <dt>Server Name / IP Address</dt>
+                <dd id="lblServer"></dd>
+                <dt>Protocol</dt>
+                <dd id="lblProtocol"></dd>
+                <dd id="msg"></dd>
+                <dt>Port</dt>
+                <dd id="lblPort"></dd>
+                <dt>URL</dt>
+                <dd id="lblUrl"></dd>
+            </dl>
+        </fieldset>
+    </body>
+</html>
+Ex: location.search [It is used to get the query string] 
+Search.html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Search</title>
+    </head>
+    <body>
+        <form method="GET" action="results.html">
+            <div align="center">
+                <h2>Google</h2>
+                <input name="str" type="text" id="txtSearch" size="40">
+                <br><br>
+                <button>Search</button>
+            </div>
+        </form>
+    </body>
+</html>
+Results.html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Results</title>
+        <script>
+            var data = [
+                {Name: "TV", Category: "Electronics"},
+                {Name: "Mobile", Category: "Electronics"},
+                {Name: "Shirt", Category:"Fashion"},
+                {Name: "Nike Casuals", Category: "Footwear"}
+            ]
+            function bodyload(){
+                var str = location.search;
+                var term = str.substring(str.indexOf("=")+1);
+                var products = data.filter(function(product){return product.Category==term});
+                var lstProducts = document.getElementById("lstProducts");
+                for(var item of products) {
+                   
+                    var li = document.createElement("li");
+                    li.innerHTML = item.Name;
+                    lstProducts.appendChild(li);
+                }
+            }
+        </script>
+    </head>
+    <body onload="bodyload()">
+        <h2>Search Results</h2>
+        <ol id="lstProducts">
+
+        </ol>
+    </body>
+</html>

@@ -1,0 +1,62 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: rgb(170, 191, 201);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    background-image: url("https://example.com/header-image.jpg");
+    color: white;
+    padding: 20px;
+    background-size: cover;
+}
+
+nav a {
+    color: white;
+    margin: 10px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: cyan;
+}
+
+#products {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 50px;
+}
+
+.product {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 15px;
+    text-align: center;
+}
+
+.product img {
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+}
+
+.product .btn {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+}
+
+.product .btn:hover {
+    background-color: red;
+    border-radius: 15px;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    padding: 20px;
+}
